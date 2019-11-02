@@ -684,7 +684,12 @@ int main(int argc, char **argv)
 			flag_stdin = 2;
 		}
 	}
-
+        /*if(p_text != NULL){
+        FILE *entry;
+        entry = fopen("/home/omar/debug/entry.txt","a");
+        fprintf(entry,p_text);
+        fprintf(entry,"\n---------------------------\n");
+        }*/
 	if (p_text != NULL) {
 		int size;
 		size = strlen(p_text);
