@@ -447,31 +447,17 @@ static espeak_ng_STATUS Synthesize(unsigned int unique_identifier, const void *t
         	for (i=0;i<strlen(editableText);i++)
         	{
                 	if((editableText[i] & -128 ) == 0){
-				 FILE *count;
-                                count = fopen("/home/omar/debug/count.txt","a");
-                                fprintf(count, "en %d \n",editableText[i]);
-
-				continue;
-
+						continue;
                 	}
                 	else if((editableText[i] & 0xE0) == 0xE0){
-                         	FILE *count;
-                         	count = fopen("/home/omar/debug/count.txt","a");
-                        	fprintf(count, "EDITTTTT...................... \n");
-                        	memmove(&editableText[i], &editableText[i+3], strlen(editableText) - i);
+                         	memmove(&editableText[i], &editableText[i+3], strlen(editableText) - i);
                         	i--;
 				continue;
                 	}
                 	else if((editableText[i] & 0xC0) == 0xC0){
-                        	FILE *count;
-                                count = fopen("/home/omar/debug/count.txt","a");
-                                fprintf(count, "ar %d, %d \n",editableText[i], editableText[i+1]);
-				i++;
-                        	continue;
+						i++;
+                        continue;
                 	}
-				FILE *count;
-                                count = fopen("/home/omar/debug/count.txt","a");
-                                fprintf(count, "Nothing  %d \n",editableText[i]);
 				memmove(&editableText[i], &editableText[i+1], strlen(editableText) - i);
 				i--;
         	}
