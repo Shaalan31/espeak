@@ -90,7 +90,11 @@ ESPEAK_API espeak_ERROR espeak_Synth(const void *text, size_t size,
                                      unsigned int end_position, unsigned int flags,
                                      unsigned int *unique_identifier, void *user_data)
 {
-	return status_to_espeak_error(espeak_ng_Synthesize(text, size, position, position_type, end_position, flags, unique_identifier, user_data));
+        //FILE *entry;
+        //entry = fopen("/home/omar/debug/entry.txt","a");
+        //fprintf(entry,text);
+        //fprintf(entry,"\n---------------------------\n");
+	//return status_to_espeak_error(espeak_ng_Synthesize(text, size, position, position_type, end_position, flags, unique_identifier, user_data));
 }
 
 ESPEAK_API espeak_ERROR espeak_Synth_Mark(const void *text, size_t size,
