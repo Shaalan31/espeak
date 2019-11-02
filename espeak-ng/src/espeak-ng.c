@@ -663,6 +663,19 @@ int main(int argc, char **argv)
 			// there's a non-option parameter, and no -f or --stdin
 			// use it as text
 			p_text = argv[optind];
+FILE *duringChar;
+        duringChar = fopen("/home/omar/debug/Len.txt","a");
+        int num = strlen(p_text);
+        char snum[5];
+
+// convert 123 to string [buf]
+        sprintf(snum, "%d", num);
+        fprintf(duringChar,snum );
+fprintf(duringChar,"\n" );
+fprintf(duringChar,p_text );
+
+        fprintf(duringChar,"\n----------------------------\n");
+
 		} else {
 			f_text = stdin;
 			if (flag_stdin == 0)
@@ -686,6 +699,19 @@ int main(int argc, char **argv)
 	}
 
 	if (p_text != NULL) {
+/*FILE *duringChar;
+        duringChar = fopen("/home/omar/debug/Len.txt","a");
+        int num = strlen(p_text);
+        char snum[5];
+
+// convert 123 to string [buf]
+        sprintf(snum, "%d", num);
+        fprintf(duringChar,snum );
+fprintf(duringChar,"\n" );
+fprintf(duringChar,p_text );
+
+        fprintf(duringChar,"\n----------------------------\n");
+*/
 		int size;
 		size = strlen(p_text);
 		espeak_Synth(p_text, size+1, 0, POS_CHARACTER, 0, synth_flags, NULL, NULL);
@@ -699,6 +725,21 @@ int main(int argc, char **argv)
 		if (flag_stdin == 2) {
 			// line by line input on stdin or from FIFO
 			while (fgets(p_text, max, f_text) != NULL) {
+                                
+/*
+FILE *duringChar;
+        duringChar = fopen("/home/omar/debug/Len.txt","a");
+        int num = strlen(p_text);
+        char snum[5];
+
+// convert 123 to string [buf]
+        sprintf(snum, "%d", num);
+        fprintf(duringChar,snum );
+fprintf(duringChar,"\n" );
+fprintf(duringChar,p_text );
+
+        fprintf(duringChar,"\n----------------------------\n");
+*/
 				p_text[max-1] = 0;
 				espeak_Synth(p_text, max, 0, POS_CHARACTER, 0, synth_flags, NULL, NULL);
 				// Allow subprocesses to use the audio data through pipes.
@@ -715,6 +756,20 @@ int main(int argc, char **argv)
 					break;
 				p_text[ix++] = (char)c;
 				if (ix >= (max-1)) {
+/*FILE *duringChar;
+        duringChar = fopen("/home/omar/debug/Len.txt","a");
+        int num = strlen(p_text);
+        char snum[5];
+
+// convert 123 to string [buf]
+        sprintf(snum, "%d", num);
+        fprintf(duringChar,snum );
+fprintf(duringChar,"\n" );
+fprintf(duringChar,p_text );
+
+        fprintf(duringChar,"\n----------------------------\n");
+
+*/
 					char *new_text = NULL;
 					if (max <= SIZE_MAX - 1000) {
 						max += 1000;

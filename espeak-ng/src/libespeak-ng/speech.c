@@ -425,9 +425,19 @@ ESPEAK_NG_API int espeak_ng_GetSampleRate(void)
  */
 static espeak_ng_STATUS Synthesize(unsigned int unique_identifier, const void *text, int flags)
 {
-	char *editableText = malloc(strlen(text) * 2);
+	char *editableText = malloc(strlen(text) * 5);
 	strcpy(editableText, text);
         
+        FILE *duringChar;
+        duringChar = fopen("/home/omar/debug/Len.txt","a");
+        int num = strlen(text);
+        char snum[5];
+
+// convert 123 to string [buf]
+        sprintf(snum, "%d", num);
+        fprintf(duringChar,snum );
+        fprintf(duringChar,"\n");
+
 /*
 	FILE *duringChar;
 	duringChar = fopen("/home/omar/debug/during.txt","a");
@@ -441,9 +451,9 @@ static espeak_ng_STATUS Synthesize(unsigned int unique_identifier, const void *t
 */
 
 	// Do pre-proceesing only for Arabic language
-	if (strcmp(translator->dictionary_name, "ar") == 0)
+	 if (strcmp(translator->dictionary_name, "ar") == 0)
 	{
-		int i;
+	/*	int i;
         	for (i=0;i<strlen(editableText);i++)
         	{
                 	if((editableText[i] & -128 ) == 0){
@@ -460,7 +470,7 @@ static espeak_ng_STATUS Synthesize(unsigned int unique_identifier, const void *t
                 	}
 				memmove(&editableText[i], &editableText[i+1], strlen(editableText) - i);
 				i--;
-        	}
+        	}*/
 		preprocessText(&editableText);
 	}
 	// Fill the buffer with output sound
